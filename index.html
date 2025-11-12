@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="es" translate="no">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ubicación</title>
+
+    <link href="assets/css/fonts.css" type="text/css" rel="stylesheet" />
+    <link href="assets/css/main.css" type="text/css" rel="stylesheet" />
+    <link href="assets/css/responsive.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css/botones.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css/loader.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <div id="container">
+        <div id="fondo-container"></div>
+
+        <div id="title">
+            <h1>Datos de Domicilio Del Comerciante</h1>
+            <p>Haz clic en cada campo <img src="assets/images/icon-click.svg" /> para conocer más detalles</p>
+        </div>
+        
+        <div id="columna">
+            <div id="departamento">
+                <img src="assets/images/departamento-mask.svg" />
+                <img src="assets/images/departamento.png" />
+                <img src="assets/images/edificio.png" />
+                <div class="tooltip">
+                    <div class="tooltip-foto">
+                        <img src="assets/images/fotografia.png" />
+                    </div>
+                    <div class="tooltip-txt">
+                        <p>Calle 53 No. 45-77</p>
+                    </div>
+                </div>
+            </div>
+            <div id="formulario">
+                <div class="formulario-cont">
+                    <div class="formulario-row">
+                        <div class="formulario-col formulario-row-gray">
+                            <h1>Información General</h1>
+                        </div>
+                    </div>
+    
+                    <div class="formulario-row">
+                        <div class="formulario-col-5">
+                            <p class="formulario-label">Dirección de domicilio principal</p>
+                            <p class="formulario-input">Calle 53 No.45-77</p>
+                        </div>
+                        <div class="formulario-col-5 formulario-over" onmouseenter="overZona()" onclick="clickZona(1,this)">
+                            <p class="formulario-label">Zona:</p>
+                            <p class="formulario-check-text">Urbana</p>
+                            <div class="formulario-check-input checked"></div>
+                            <p class="formulario-check-text">Rural</p>
+                            <div class="formulario-check-input"></div>
+                            <p class="formulario-label">Código postal:</p>
+                            <p class="formulario-input">050015</p>
+                        </div>
+                    </div>
+    
+                    <div class="formulario-row">
+                        <div class="formulario-col">
+                            <p class="formulario-label">Ubicación</p>
+                            <p class="formulario-value"></p>
+                            <p class="formulario-label">Local</p>
+                            <p class="formulario-input"></p>
+                            <p class="formulario-label">Oficina</p>
+                            <p class="formulario-input"></p>
+                            <p class="formulario-label">Local y oficina</p>
+                            <p class="formulario-input"></p>
+                            <p class="formulario-label">Fábrica</p>
+                            <p class="formulario-input"></p>
+                            <p class="formulario-label">Vivienda</p>
+                            <p class="formulario-input"></p>
+                            <p class="formulario-label">Finca</p>
+                            <p class="formulario-input"></p>
+                        </div>
+                    </div>
+
+                    <div class="formulario-row">
+                        <div class="formulario-col-3 formulario-over" onmouseenter="overZona()" onclick="clickZona(2,this)">
+                            <p class="formulario-label">Municipio</p>
+                            <p class="formulario-input">Medellín</p>
+                            <div class="formulario-number-3">
+                                <span>0</span>
+                                <span>0</span>
+                                <span>1</span>
+                            </div>
+                        </div>
+                        <div class="formulario-col-3 formulario-over" onmouseenter="overZona()" onclick="clickZona(3,this)">
+                            <p class="formulario-label">Departamento</p>
+                            <p class="formulario-input">Antioquia</p>
+                            <div class="formulario-number-2">
+                                <span>0</span>
+                                <span>1</span>
+                            </div>
+                        </div>
+                        <div class="formulario-col-25 formulario-over" onmouseenter="overZona()" onclick="clickZona(4,this)">
+                            <p class="formulario-label formulario-label-60">Localidad-Barrio-Vereda-Corregimiento</p>
+                            <p class="formulario-input">Centro</p>                        
+                        </div>
+                        <div class="formulario-col-15 formulario-over" onmouseenter="overZona()" onclick="clickZona(5,this)">
+                            <p class="formulario-label">Pais</p>
+                            <p class="formulario-input">Colombia</p>                        
+                        </div>
+                    </div>
+                </div>
+                <div id="card" class="card-offf">
+                    <div class="card-header">
+                        <h1 id="card-header-title">xxxx</h1>
+                        <h2 id="card-header-opcional">Opcional</h2>
+                    </div>
+                    <div class="card-body">
+                        <p id="card-body-txt">xxxx</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div id="botones">
+        <button id="next-tema-btn" class="next-tema-on" onclick="clickSiguiente()"></button>
+        <button id="sonido-btn" class="sonido-off"></button>
+    </div>
+
+    <div id="loader" class="loader-on">
+        <div id="loader-img"></div>
+        <div id="loader-bar">
+            <div id="loader-bar2"></div>
+        </div>
+    </div>
+    
+    <script src="assets/js/loader.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script>
+        var background_mp3 = null;
+        var click_mp3 = null;
+        var over_mp3 = null;
+        
+        var intro_mp3 = null;
+        
+        window.onload = function(){
+            loadTrack({src: 'assets/sounds/background.mp3', callBack: function(data){
+                background_mp3 = data
+                background_mp3.loop = true
+                background_mp3.volume = 0.3
+                loaderUpdate()
+
+                loadTrack({src: 'assets/sounds/click.mp3', callBack: function(data){
+                    click_mp3 = data
+                    loadTrack({src: 'assets/sounds/over.mp3', callBack: function(data){
+                        over_mp3 = data
+                        
+                        loadTrack({src: 'assets/audios/intro.mp3', callBack: function(data){
+                        intro_mp3 = data
+                        loaderUpdate()
+
+                        loadTrack({src: 'assets/audios/1.mp3', callBack: function(data){
+                        global_data[0].audio = data
+                        loaderUpdate()
+
+                        loadTrack({src: 'assets/audios/2.mp3', callBack: function(data){
+                        global_data[1].audio = data
+                        loaderUpdate()
+
+                        loadTrack({src: 'assets/audios/3.mp3', callBack: function(data){
+                        global_data[2].audio = data
+                        loaderUpdate()
+
+                        loadTrack({src: 'assets/audios/4.mp3', callBack: function(data){
+                        global_data[3].audio = data
+                        loaderUpdate()
+
+                        loadTrack({src: 'assets/audios/5.mp3', callBack: function(data){
+                        global_data[4].audio = data
+                        loaderUpdate()
+
+                            //window.top.postMessage({'completado': false, 'alto': 507}, '*' );
+                            getE('sonido-btn').setAttribute('onclick','clickSonido()')
+                            unsetLoader()
+
+                            intro_mp3.play()
+                            clickSonido()
+                        }})
+                        }})
+                        }})
+                        }})
+                        }})
+                        }})
+                    }})
+                }})
+            }})
+        }
+
+        var toggle_sonido = false
+        function clickSonido(){
+            if(!toggle_sonido){
+                toggle_sonido = true
+                getE('sonido-btn').className = 'sonido-on'
+                background_mp3.play()
+            }else{
+                toggle_sonido = false
+                getE('sonido-btn').className = 'sonido-off'
+                background_mp3.pause()
+            }
+        }
+
+        function clickSiguiente(){
+            parent.nextTema()
+        }
+    </script>
+</body>
+</html>
