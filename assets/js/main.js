@@ -60,7 +60,7 @@ var global_data = [{
     title:'Localidad / Barrio / Vereda / Corregimiento:',
     description:'Útil pero no obligatoria para el registro.',
     audio:null,
-    opcional:false
+    opcional:true
 },{
     title:'País:',
     description:'Siempre se entiende que el registro se hace en Colombia, en la Cámara de Comercio competente.',
