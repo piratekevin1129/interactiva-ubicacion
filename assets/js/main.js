@@ -118,7 +118,7 @@ function setCard(audio){
     global_audio = global_data[audio-1].audio
     global_audio.currentTime = 0
     global_audio.play()
-
+    click_mp3.play()
 
     //.formulario-row-red
 }
